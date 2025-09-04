@@ -129,6 +129,131 @@
             opacity: 0;
             transform: translateY(50px);
             animation: fadeInUp 1s ease 0.5s forwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        /* Profile Picture Styles */
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-picture {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            padding: 4px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            animation: profileGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes profileGlow {
+            0%, 100% { 
+                box-shadow: 0 0 30px rgba(0, 122, 255, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 50px rgba(191, 90, 242, 0.4);
+                transform: scale(1.02);
+            }
+        }
+
+        .profile-picture:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 60px rgba(0, 122, 255, 0.5);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            background: var(--secondary-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--text-secondary);
+        }
+
+        .profile-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--primary-bg) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--text-secondary);
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .profile-info {
+            text-align: center;
+        }
+
+        .profile-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-text {
+            text-align: center;
         }
 
         @keyframes fadeInUp {
@@ -323,6 +448,160 @@
             transform: scale(1.05);
         }
 
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent-blue), var(--accent-purple));
+            opacity: 0.3;
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 80px;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .experience-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: 21px;
+            top: 20px;
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 122, 255, 0.5);
+        }
+
+        .experience-date {
+            position: absolute;
+            left: -60px;
+            top: 15px;
+            color: var(--accent-blue);
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+            transform: rotate(-90deg);
+            transform-origin: left top;
+        }
+
+        .experience-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .experience-content:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .company-logo {
+            flex-shrink: 0;
+        }
+
+        .logo-placeholder {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .experience-details h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-details h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .location {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .achievements {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .achievements li {
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievements li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        .skills-used {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(0, 122, 255, 0.15);
+            color: var(--accent-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 122, 255, 0.3);
+        }
+
         /* Contact Section */
         .contact-form {
             max-width: 600px;
@@ -377,6 +656,57 @@
             .container {
                 padding: 0 1rem;
             }
+
+            .experience-timeline::before {
+                left: 20px;
+            }
+
+            .experience-item {
+                padding-left: 60px;
+            }
+
+            .experience-item::before {
+                left: 11px;
+            }
+
+            .experience-date {
+                position: static;
+                transform: none;
+                margin-bottom: 0.5rem;
+                color: var(--accent-purple);
+            }
+
+            .experience-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .logo-placeholder {
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
+
+            .profile-section {
+                gap: 1rem;
+            }
+
+            .profile-picture {
+                width: 150px;
+                height: 150px;
+            }
+
+            .profile-placeholder {
+                font-size: 3rem;
+            }
+
+            .profile-name {
+                font-size: 1.1rem;
+            }
+
+            .hero-text h1 {
+                margin-top: 1rem;
+            }
         }
 
         /* Scroll indicator */
@@ -400,6 +730,7 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -409,9 +740,26 @@
     <section id="home" class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <h1>Creative Developer</h1>
-            <p>Crafting digital experiences with passion and precision</p>
-            <a href="#projects" class="cta-button">View My Work</a>
+            <div class="profile-section">
+                <div class="profile-picture">
+                    <!-- Your profile image - replace 'profile.jpg' with your actual filename -->
+                    <img src="profile.jpg" alt="Your Name" class="profile-img" id="profileImage" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <!-- Fallback placeholder if image doesn't load -->
+                    <div class="profile-placeholder" id="profilePlaceholder" style="display: none;">👨‍💻</div>
+                </div>
+                <div class="profile-info">
+                    <div class="profile-name">Your Name</div>
+                    <div class="profile-status">
+                        <span class="status-dot"></span>
+                        Available for work
+                    </div>
+                </div>
+            </div>
+            <div class="hero-text">
+                <h1>Creative Developer</h1>
+                <p>Crafting digital experiences with passion and precision</p>
+                <a href="#projects" class="cta-button">View My Work</a>
+            </div>
         </div>
     </section>
 
@@ -434,6 +782,124 @@
                     <div class="skill-item">UI/UX Design</div>
                     <div class="skill-item">Database Design</div>
                     <div class="skill-item">Cloud Services</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Experience</h2>
+                <p>My professional journey and key achievements</p>
+            </div>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="experience-date">2023 - Present</div>
+                    <div class="experience-content">
+                        <div class="company-logo">
+                            <div class="logo-placeholder">TC</div>
+                        </div>
+                        <div class="experience-details">
+                            <h3>Senior Full-Stack Developer</h3>
+                            <h4>Tech Corp Solutions</h4>
+                            <p class="location">San Francisco, CA • Full-time</p>
+                            <p class="description">Led development of enterprise web applications serving 50K+ users. Architected scalable microservices and implemented CI/CD pipelines, reducing deployment time by 70%.</p>
+                            <ul class="achievements">
+                                <li>Increased application performance by 40% through code optimization</li>
+                                <li>Mentored 3 junior developers and established coding best practices</li>
+                                <li>Spearheaded migration to cloud infrastructure (AWS)</li>
+                            </ul>
+                            <div class="skills-used">
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">AWS</span>
+                                <span class="skill-tag">Docker</span>
+                                <span class="skill-tag">PostgreSQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-date">2021 - 2023</div>
+                    <div class="experience-content">
+                        <div class="company-logo">
+                            <div class="logo-placeholder">DS</div>
+                        </div>
+                        <div class="experience-details">
+                            <h3>Frontend Developer</h3>
+                            <h4>Digital Studio Inc</h4>
+                            <p class="location">New York, NY • Full-time</p>
+                            <p class="description">Developed responsive web applications and mobile-first designs for clients ranging from startups to Fortune 500 companies. Collaborated with UX designers to create pixel-perfect implementations.</p>
+                            <ul class="achievements">
+                                <li>Built 15+ client websites with 98% satisfaction rate</li>
+                                <li>Reduced page load times by 60% through performance optimization</li>
+                                <li>Implemented automated testing reducing bugs by 45%</li>
+                            </ul>
+                            <div class="skills-used">
+                                <span class="skill-tag">Vue.js</span>
+                                <span class="skill-tag">TypeScript</span>
+                                <span class="skill-tag">SASS</span>
+                                <span class="skill-tag">Jest</span>
+                                <span class="skill-tag">Figma</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-date">2020 - 2021</div>
+                    <div class="experience-content">
+                        <div class="company-logo">
+                            <div class="logo-placeholder">SL</div>
+                        </div>
+                        <div class="experience-details">
+                            <h3>Junior Web Developer</h3>
+                            <h4>StartupLab</h4>
+                            <p class="location">Austin, TX • Full-time</p>
+                            <p class="description">Contributed to early-stage startup development, working on MVP products and rapid prototyping. Gained experience in agile development and direct client communication.</p>
+                            <ul class="achievements">
+                                <li>Helped launch 3 successful product MVPs</li>
+                                <li>Improved development workflow efficiency by 30%</li>
+                                <li>Built responsive designs for mobile and desktop</li>
+                            </ul>
+                            <div class="skills-used">
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">HTML/CSS</span>
+                                <span class="skill-tag">Bootstrap</span>
+                                <span class="skill-tag">Git</span>
+                                <span class="skill-tag">REST APIs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-date">2019 - 2020</div>
+                    <div class="experience-content">
+                        <div class="company-logo">
+                            <div class="logo-placeholder">FL</div>
+                        </div>
+                        <div class="experience-details">
+                            <h3>Freelance Web Developer</h3>
+                            <h4>Self-Employed</h4>
+                            <p class="location">Remote • Freelance</p>
+                            <p class="description">Provided web development services to local businesses and startups. Specialized in creating custom websites, e-commerce solutions, and brand identity development.</p>
+                            <ul class="achievements">
+                                <li>Completed 20+ client projects with 5-star ratings</li>
+                                <li>Generated $50K+ in freelance revenue</li>
+                                <li>Built long-term relationships with 8 recurring clients</li>
+                            </ul>
+                            <div class="skills-used">
+                                <span class="skill-tag">WordPress</span>
+                                <span class="skill-tag">PHP</span>
+                                <span class="skill-tag">MySQL</span>
+                                <span class="skill-tag">Photoshop</span>
+                                <span class="skill-tag">SEO</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -613,6 +1079,15 @@
                         form.reset();
                     }, 2000);
                 }, 1500);
+            });
+        }
+
+        // Profile picture functionality
+        function initProfilePicture() {
+            const profilePicture = document.querySelector('.profile-picture');
+            
+            profilePicture.addEventListener('click', function() {
+                console.log('Profile picture clicked - you can add upload functionality here');
             });
         }
 
