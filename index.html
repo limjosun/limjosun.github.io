@@ -547,19 +547,17 @@
         }
 
         .experience-details h4 a {
-    color: inherit;       /* inherit color from h4 */
-    text-decoration: none; /* remove underline */
+        color: var(--accent-blue);  /* keep accent color */
+        text-decoration: none;       /* optional: remove underline */
         }
 
-        .experience-details h4 a:visited {
-            color: inherit;       /* keep same color after clicking */
-        }
-        
+        .experience-details h4 a:visited,
         .experience-details h4 a:hover,
-        .experience-details h4 a:active {
-            color: inherit;       /* optional: keep same color on hover/click */
+        .experience-details h4 a:active,
+        .experience-details h4 a:focus {
+        color: var(--accent-blue);  /* ensures color stays the same for all states */
+        text-decoration: none;       /* optional: keep consistent underline style */
         }
-
 
         .location {
             color: var(--text-secondary);
