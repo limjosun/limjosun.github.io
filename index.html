@@ -1027,26 +1027,51 @@
             });
         }
 
-        // Form submission
+        // EmailJS Configuration and Form submission
         function initContactForm() {
-            const form = document.querySelector('.contact-form');
+            // Initialize EmailJS with your public key
+            emailjs.init('ncGCWKtBp1zATn6kB'); // Replace with your EmailJS public key
+            
+            const form = document.getElementById('contact-form');
+            
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // Simple form validation and animation
                 const button = this.querySelector('.cta-button');
+                const originalText = button.textContent;
+                
+                // Show loading state
                 button.textContent = 'Sending...';
                 button.style.background = 'linear-gradient(45deg, #34D399, #10B981)';
+                button.disabled = true;
                 
-                // Simulate form submission
-                setTimeout(() => {
-                    button.textContent = 'Message Sent!';
-                    setTimeout(() => {
-                        button.textContent = 'Send Message';
-                        button.style.background = 'linear-gradient(45deg, var(--accent-blue), var(--accent-purple))';
-                        form.reset();
-                    }, 2000);
-                }, 1500);
+                // Send email using EmailJS
+                emailjs.sendForm('service_narutosun', 'template_narutosun', this)
+                    .then(function() {
+                        // Success
+                        button.textContent = 'Message Sent!';
+                        button.style.background = 'linear-gradient(45deg, #10B981, #059669)';
+                        
+                        // Reset form after success
+                        setTimeout(() => {
+                            form.reset();
+                            button.textContent = originalText;
+                            button.style.background = 'linear-gradient(45deg, var(--accent-blue), var(--accent-purple))';
+                            button.disabled = false;
+                        }, 3000);
+                        
+                    }, function(error) {
+                        // Error
+                        console.error('EmailJS error:', error);
+                        button.textContent = 'Failed to send. Try again.';
+                        button.style.background = 'linear-gradient(45deg, #EF4444, #DC2626)';
+                        
+                        setTimeout(() => {
+                            button.textContent = originalText;
+                            button.style.background = 'linear-gradient(45deg, var(--accent-blue), var(--accent-purple))';
+                            button.disabled = false;
+                        }, 3000);
+                    });
             });
         }
 
