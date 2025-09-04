@@ -546,12 +546,20 @@
             margin-bottom: 0.3rem;
         }
 
-        .experience-details h4 {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--accent-blue);
-            margin-bottom: 0.5rem;
+        .experience-details h4 a {
+    color: inherit;       /* inherit color from h4 */
+    text-decoration: none; /* remove underline */
         }
+
+        .experience-details h4 a:visited {
+            color: inherit;       /* keep same color after clicking */
+        }
+        
+        .experience-details h4 a:hover,
+        .experience-details h4 a:active {
+            color: inherit;       /* optional: keep same color on hover/click */
+        }
+
 
         .location {
             color: var(--text-secondary);
